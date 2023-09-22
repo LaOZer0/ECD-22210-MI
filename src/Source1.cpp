@@ -11,7 +11,7 @@ double calculateNElem(long long n) {
 
 double calculatePi(long long n) {
 	double pi_num = 0.0;
-	for (int i = 0; i < n; i++) {
+	for (long long i = 0; i < n; i++) {
 		pi_num += calculateNElem(i);
 	}
 	return 4.0 * pi_num;
@@ -19,7 +19,7 @@ double calculatePi(long long n) {
 
 
 int main() {
-	long long n = 2147455400;
+	long long n = 2407455400;
 	cout << setprecision(15) << calculatePi(n) << endl;
 	return 0;
 }
