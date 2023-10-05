@@ -1,3 +1,0 @@
-C:/ECD/ECD-22210-MI/out/build/x64-Debug/CMakeFiles/task1.dir
-C:/ECD/ECD-22210-MI/out/build/x64-Debug/CMakeFiles/edit_cache.dir
-C:/ECD/ECD-22210-MI/out/build/x64-Debug/CMakeFiles/rebuild_cache.dir
