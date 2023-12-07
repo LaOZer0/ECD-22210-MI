@@ -1,6 +1,6 @@
 #include "Vector.h"
 
-float MulMatrix(float* x, float* y, int N) {
+float multiplicateMatrix(float* x, float* y, int N) {
 	float summa;
 	int i;
 	__m128* xx, * yy;
@@ -19,7 +19,7 @@ float MulMatrix(float* x, float* y, int N) {
 	return summa;
 }
 
-void MulVectors(float A[], float B[], float C[], int N) {
+void multiplicateVectors(float A[], float B[], float C[], int N) {
 	int i, j;
 	float* mas = (float*)malloc(N * N * sizeof(float));
 	for (i = 0; i < N; i++) {
@@ -30,13 +30,13 @@ void MulVectors(float A[], float B[], float C[], int N) {
 
 	for (i = 0; i < N; i++) {
 		for (j = 0; j < N; j++) {
-			C[j * N + i] = MulMatrix(&A[i * N], &mas[j * N], N);
+			C[j * N + i] = multiplicateMatrix(&A[i * N], &mas[j * N], N);
 		}
 
 	}
 }
 
-void AddVectors(float A[], float B[], float C[], int N) {
+void addVectors(float A[], float B[], float C[], int N) {
 	int i, k;
 	__m128 p;
 	for (i = 0; i < N; i++) {
@@ -50,7 +50,7 @@ void AddVectors(float A[], float B[], float C[], int N) {
 	}
 }
 
-void SubVectors(float A[], float B[], float C[], int N) {
+void subVectors(float A[], float B[], float C[], int N) {
 	int i, k;
 	__m128 p;
 	for (i = 0; i < N; i++) {
@@ -64,7 +64,7 @@ void SubVectors(float A[], float B[], float C[], int N) {
 	}
 }
 
-void InvertMatrixWithSSE(float mas[], float BB[], int N, int M) {
+void inverseMatrixWithSSE(float mas[], float BB[], int N, int M) {
 	float* I, * B, * R, * C, * sib, max1, maxst;
 	int summa, i, j;
 	I = (float*)malloc(N * N * sizeof(float));
@@ -111,9 +111,9 @@ void InvertMatrixWithSSE(float mas[], float BB[], int N, int M) {
 		}
 	}
 
-	MulVectors(B, mas, C, N);
+	multiplicateVectors(B, mas, C, N);
 
-	SubVectors(I, C, R, N);
+	subVectors(I, C, R, N);
 
 	for (i = 0; i < N; i++) {
 		for (j = 0; j < N; j++) {
@@ -122,16 +122,16 @@ void InvertMatrixWithSSE(float mas[], float BB[], int N, int M) {
 		}
 	}
 	for (int s = 1; s <= M; s++) {
-		MulVectors(sib, R, C, N);
+		multiplicateVectors(sib, R, C, N);
 		for (i = 0; i < N; i++) {
 			for (j = 0; j < N; j++) {
 				sib[j * N + i] = C[j * N + i];
 			}
 
 		}
-		AddVectors(BB, sib, BB, N);
+		addVectors(BB, sib, BB, N);
 	}
-	MulVectors(BB, B, C, N);
+	multiplicateVectors(BB, B, C, N);
 
 	for (i = 0; i < N; i++) {
 		for (j = 0; j < N; j++) {

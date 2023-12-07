@@ -16,7 +16,7 @@ void zeroMatrix(float matrix[], int N) {
 	}
 }
 
-void mulmatrix(float A[], float B[], float C[], int N) {
+void mulMatrix(float A[], float B[], float C[], int N) {
 	int i, j, k;
 	zeroMatrix(C, N);
 	float* transposedB = (float*)malloc(N * N * sizeof(float));
@@ -31,7 +31,7 @@ void mulmatrix(float A[], float B[], float C[], int N) {
 	}
 }
 
-void summatrix(float A[], float B[], float C[], int N) {
+void sumMatrix(float A[], float B[], float C[], int N) {
 	int i, j;
 	for (i = 0; i < N; i++) {
 		for (j = 0; j < N; j++) {
@@ -49,7 +49,7 @@ void submatrix(float A[], float B[], float C[], int N) {
 	}
 }
 
-void InverseMatrixOfNative(float mas[], float BB[], int N, int M) {
+void inverseMatrixOfNative(float mas[], float BB[], int N, int M) {
 	float* I, * B, * C, * R, * SIB, max, maxst, summa;
 	int i, j, s;
 	I = (float*)malloc(N * N * sizeof(float));
@@ -95,7 +95,7 @@ void InverseMatrixOfNative(float mas[], float BB[], int N, int M) {
 		}
 	}
 
-	mulmatrix(B, mas, C, N);
+	mulMatrix(B, mas, C, N);
 
 	submatrix(I, C, R, N);
 
@@ -107,16 +107,16 @@ void InverseMatrixOfNative(float mas[], float BB[], int N, int M) {
 	}
 
 	for (s = 1; s <= M; s++) {
-		mulmatrix(SIB, R, C, N);
+		mulMatrix(SIB, R, C, N);
 
 		for (i = 0; i < N; i++) {
 			for (j = 0; j < N; j++) {
 				SIB[j * N + i] = C[j * N + i];
 			}
 		}
-		summatrix(BB, SIB, BB, N);
+		sumMatrix(BB, SIB, BB, N);
 	}
-	mulmatrix(BB, B, C, N);
+	mulMatrix(BB, B, C, N);
 	for (i = 0; i < N; i++) {
 		for (j = 0; j < N; j++) {
 			BB[j * N + i] = C[j * N + i];

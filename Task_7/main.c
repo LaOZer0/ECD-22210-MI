@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
-//#include <cblas.h>
+#include <cblas.h>
 #include "Blas.h"
 #include "Native.h"
 #include "Vector.h"
@@ -22,7 +22,7 @@ int main() {
 		}
 	}
 
-	//inverseMatrixWithBlas(mas, res, N, M);
-	InverseMatrixOfNative(mas, res, N, M);
-	//InvertMatrixWithSSE(mas, res, N, M);
+	inverseMatrixWithBlas(mas, res, N, M);
+	inverseMatrixOfNative(mas, res, N, M);
+	inverseMatrixWithSSE(mas, res, N, M);
 }
