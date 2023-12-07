@@ -21,8 +21,4 @@ int main() {
 			}
 		}
 	}
-
-	inverseMatrixWithBlas(mas, res, N, M);
-	inverseMatrixOfNative(mas, res, N, M);
-	inverseMatrixWithSSE(mas, res, N, M);
 }
