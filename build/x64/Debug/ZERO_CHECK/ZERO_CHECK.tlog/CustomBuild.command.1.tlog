@@ -1,0 +1,10 @@
+^C:\USERS\ИГОРЬ\SOURCE\REPOS\ECD-22210-MI\BUILD\CMAKEFILES\1EA5B8740E19E6DB653775BA8B818CD4\GENERATE.STAMP.RULE
+setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SC:/Users/Игорь/source/repos/ECD-22210-MI -BC:/Users/Игорь/source/repos/ECD-22210-MI/build --check-stamp-list CMakeFiles/generate.stamp.list --vs-solution-file C:/Users/Игорь/source/repos/ECD-22210-MI/build/Task1_OPP.sln
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
