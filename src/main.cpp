@@ -7,7 +7,7 @@ int main(int argc, char **argv) {
     auto start_time = std::chrono::high_resolution_clock::now();
     UsualSolution usual(9600);
     usual.run(0.001);
-    //usual.printResult();
+    usual.printResult();
     auto end_time = std::chrono::high_resolution_clock::now();
     auto duration = std::chrono::duration_cast<std::chrono::microseconds>(end_time - start_time);
     std::cout << "Time passed: " << duration.count() << " micsec" << std::endl;
