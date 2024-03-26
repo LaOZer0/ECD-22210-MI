@@ -69,7 +69,7 @@ private:
 
     bool checkTheAccuracy(double epsilon) override;
 
-    double multiply_v(const double *a, const double *b, int offset, int count) const;
+    double multiplyVector(const double *a, const double *b, int offset, int count) const;
 
     double findNormVectorB();
 

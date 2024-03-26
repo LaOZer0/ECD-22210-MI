@@ -45,7 +45,7 @@ double SecondSolution::findNormVectorB() {
     return sum;
 }
 
-double SecondSolution::multiply_v(const double *a, const double *b, int offset, int count) const {
+double SecondSolution::multiplyVector(const double *a, const double *b, int offset, int count) const {
     double sum = 0.0;
     for (int i = offset, j = 0; i < offset + count; i++, j++) {
         sum += a[i] * b[j];
@@ -75,7 +75,7 @@ void SecondSolution::changeTheVectorApproximation() {
     for (int k = 0; k < size; k++) {
         int block = (rank + k) % size;
         for (int i = blockBegin, j = 0; i < blockEnd; i++, j++) {
-            blockResult[j] += multiply_v(A[i], vectorX, block * blockSize, blockSize);
+            blockResult[j] += multiplyVector(A[i], vectorX, block * blockSize, blockSize);
         }
         MPI_Sendrecv(&vectorX[0],
                      blockSize,
@@ -105,7 +105,7 @@ bool SecondSolution::checkTheAccuracy(double epsilon) {
     for (int k = 0; k < size; k++) {
         int block = (rank + k) % size;
         for (int i = blockBegin, j = 0; i < blockEnd; i++, j++) {
-            result[j] += multiply_v(A[i], vectorX, block * blockSize, blockSize);
+            result[j] += multiplyVector(A[i], vectorX, block * blockSize, blockSize);
         }
         MPI_Sendrecv(vectorX,
                      blockSize,

@@ -68,9 +68,9 @@ bool UsualSolution::checkTheAccuracy(double epsilon) {
     for (int i = 0; i < N; i++) {
         result[i] = (result[i] - b[i]);
     }
-    double norm_numerator = findNorm(result, N);
+    double normNumerator = findNorm(result, N);
     delete[] result;
-    return norm_numerator / normDenominator < epsilon;
+    return normNumerator / normDenominator < epsilon;
 }
 
 void UsualSolution::printResult() {
